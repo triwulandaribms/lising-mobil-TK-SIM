@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hasil Perhitungan</title>
+    <link rel="stylesheet" href="hasil.css" />
+  </head>
+  <body>
+    <div id="hasil"></div>
+    <script>
+      window.onload = function () {
+        var pvTotal = JSON.parse(localStorage.getItem("hasilPerhitungan"));
+        var hasilElemen = document.getElementById("hasil");
+
+        var rasio = [10, 15, 20, 25, 30];
+        var bulan = 11;
+
+        var tabelPerhitungan = "";
+        for (var a = 0; a < pvTotal.length; a++) {
+          var totalPVPertahun = pvTotal[a].reduce(
+            (index, value) => index + value,
+            0
+          );
+
+          tabelPerhitungan +=
+            "<h3>PERHITUNGAN " +
+            (a + 1) +
+            "</h3>" +
+            "<table>" +
+            "<tr><th>Bulan</th><th>PV</th></tr>";
+
+          for (var b = 0; b < bulan; b++) {
+            tabelPerhitungan += "<tr>";
+            tabelPerhitungan += "<td>Bulan " + (b + 1) + "</td>";
+            tabelPerhitungan +=
+              "<td>" +
+              Math.round(pvTotal[a][b]).toLocaleString("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              }) +
+              "</td>";
+            tabelPerhitungan += "</tr>";
+          }
+
+          tabelPerhitungan +=
+            "<tr><td><strong>Total PV Pertahun</strong></td>" +
+            "<td>" +
+            Math.round(totalPVPertahun).toLocaleString("id-ID", {
+              style: "currency",
+              currency: "IDR",
+            }) +
+            "</td>";
+          tabelPerhitungan += "</table><br><br>";
+        }
+
+        var hasil = "<h2>Hasil Perhitungan</h2>" + tabelPerhitungan;
+        hasilElemen.innerHTML = hasil;
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kalkulator Cicilan dan IRR</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>Kalkulator Cicilan dan IRR</h1>
+
+    <div class="box">
+      <h2>Input Data</h2>
+      <label for="harga">Harga:</label>
+      <input type="number" id="harga" /><br /><br />
+
+      <label for="dp">DP:</label>
+      <input type="number" id="dp" /><br /><br />
+
+      <label for="cicilan">Cicilan per Bulan:</label>
+      <input type="number" id="cicilan" /><br /><br />
+
+      <label for="tahun">Tahun:</label>
+      <input type="number" id="tahun" /><br /><br />
+    </div>
+
+    <button onclick="hitungCicilan()">Hitung Cicilan</button>
+    <button onclick="hasilPerhitungan()">Hasil Perhitungan</button>
+
+    <div id="hasil"></div>
+    <!-- <div id="hasil-irr"></div> -->
+  </body>
+</html>
